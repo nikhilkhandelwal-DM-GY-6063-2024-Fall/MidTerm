@@ -25,11 +25,11 @@ This project is part of my mid-term assignment, where I am creating an interacti
 
 ## Ideas to Explore/Experiment With
 - **Custom Functions**: 
-  - To animate the sun’s ascent and other moving elements, such as birds flying across the scene.
+  - To animate the sun’s ascent and other moving elements.
 - **Arrays**:
   - To create stars that appear randomly and fade in the night sky, adding to the dynamic nature of the poster.
 - **Objects/Classes**:
-  - Characters like Simba, Nala, or Mufasa will be represented using objects or classes, with different visual states that change based on user interaction.
+  - Simba will be represented using object or classes, with different visual states that change based on user interaction.
 - **Loops**:
   - To generate repetitive patterns, such as the waves of grass in the savannah.
 - **If() Statements**:
@@ -43,5 +43,5 @@ This project is part of my mid-term assignment, where I am creating an interacti
 - The attached sketch includes the proposed design elements:
   - **Top Section**: Rising sun over Pride Rock.
   - **Middle Section**: Simba’s transformation stages.
-  - **Bottom Section**: Waves of grass in the savannah and stars in the night sky.
+  - **Bottom Section**: Waves of grass in the savannah.
 - ![Sketch](Lion_king_midterm.jpg)
