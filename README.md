@@ -44,4 +44,4 @@ This project is part of my mid-term assignment, where I am creating an interacti
   - **Top Section**: Rising sun over Pride Rock.
   - **Middle Section**: Simba’s transformation stages.
   - **Bottom Section**: Waves of grass in the savannah and stars in the night sky.
-- ![Sketch Placeholder](attach-sketch-image-here)
+- [Sketch](Lion_king_midterm.jpg)
