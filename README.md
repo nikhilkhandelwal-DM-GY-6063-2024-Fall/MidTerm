@@ -47,8 +47,6 @@ This project is part of my mid-term assignment, where I am creating an interacti
 ![Sketch](Lion_king_midterm.jpg)
 
 
-# Mid-Term Project: Interactive Poster - The Lion King
-
 ## Progress Write-up (Milestone 2)
 
 ### Work Completed This Week
