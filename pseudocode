@@ -1,0 +1,47 @@
+
+// Pseudo-code for Global Variables
+- Define a variable for the sun's vertical position (sunY)
+- Define a variable for Simba's abstract shape size (simbaSize)
+- Create an array to store star information (stars)
+
+// Setup Function
+function setup():
+  - Create a canvas with window width and height
+  - Initialize sunY to start at the bottom of the canvas (height)
+  - Initialize simbaSize to a default small size (cub state)
+  - Create 100 stars with random positions, sizes, and brightness, and add them to the stars array
+
+// Draw Function
+function draw():
+  - Set a black background
+  - Call function to draw the rising sun
+  - Call function to draw Simba's abstract shape
+  - Call function to draw the twinkling stars
+
+// Function for the Rising Sun
+function drawSun():
+  - Set sun color using a gradient (lerpColor)
+  - Draw the sun as an ellipse at the center of the canvas (width/2, sunY)
+  - If sunY is greater than halfway up the canvas (height/2), reduce sunY to create a rising effect
+
+// Function for Simba's Abstract Shape
+function drawSimbaShape():
+  - Draw an ellipse at the center of the canvas with current simbaSize
+  - Change color and size based on simbaSize variable
+
+// Function for Drawing Stars
+function drawStars():
+  - Loop through the stars array
+    - Set star color based on its brightness
+    - Draw each star as an ellipse at its position
+
+// Mouse Pressed Function
+function mousePressed():
+  - Placeholder for ripple effects (to be implemented later)
+  - Logic to create expanding circles at mouse position
+
+// Key Pressed Function
+function keyPressed():
+  - If key '1' is pressed, set simbaSize to a small value (cub)
+  - If key '2' is pressed, set simbaSize to a medium value (adolescent)
+  - If key '3' is pressed, set simbaSize to a large value (adult)
