@@ -1,17 +1,14 @@
-// Global Variables
 let sunY;           // Sun's vertical position
-let simbaSize;      // Size of Simba's abstract shape
+let simbaSize;    
 let stars = [];     // Array for stars
 
-// Setup Function
 function setup() {
-  createCanvas(windowWidth, windowHeight); // Create canvas
+  createCanvas(windowWidth, windowHeight);
   
-  // Initialize sunY and simbaSize
   sunY = height;  // Start the sun at the bottom
   simbaSize = 50; // Initial size for the "cub" state
   
-  // Create stars (initial setup)
+  // Create stars
   for (let i = 0; i < 100; i++) {
     let starX = random(width);
     let starY = random(height / 2);  // Stars in upper half
@@ -21,17 +18,13 @@ function setup() {
   }
 }
 
-// Draw Function
 function draw() {
-  background(0);  // Set background to black
+  background(0);
   
-  // Draw the rising sun
   drawSun();
   
-  // Draw Simba's abstract shape
   drawSimbaShape();
   
-  // Draw stars
   drawStars();
 }
 
@@ -67,7 +60,6 @@ function drawStars() {
 
 // Placeholder for mouse interaction (ripple effect)
 function mousePressed() {
-  // Pseudo-code: Create expanding circles at mouse position
   // - Add a new circle to an array
   // - Animate the circles by increasing their size in draw()
   // - Fade out the circles over time
@@ -75,7 +67,6 @@ function mousePressed() {
 
 // Function to handle keyboard input for changing Simba's size
 function keyPressed() {
-  // Simplified logic for changing Simba's size
   if (key === '1') {
     simbaSize = 50; // Cub state
   } else if (key === '2') {
