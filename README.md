@@ -44,4 +44,48 @@ This project is part of my mid-term assignment, where I am creating an interacti
   - **Top Section**: Rising sun over Pride Rock.
   - **Middle Section**: Simba’s transformation stages.
   - **Bottom Section**: Waves of grass in the savannah.
-- ![Sketch](Lion_king_midterm.jpg)
+![Sketch](Lion_king_midterm.jpg)
+
+
+# Mid-Term Project: Interactive Poster - The Lion King
+
+## Progress Write-up (Milestone 2)
+
+### Work Completed This Week
+This week, I focused on planning and implementing the abstract design of the interactive poster in p5.js. Following feedback, I shifted towards a more abstract representation of *The Lion King*, using shapes and colors to depict key themes. I created pseudo-code for the logic and added initial code for basic elements, including the sunrise, abstract shapes for Simba’s growth, and twinkling stars.
+
+### Project Structure and Organization
+- **Project Moments/Scenes:** 
+  - The project is organized into three abstract moments:
+    1. **Abstract Sunrise:** A gradient circle rises, symbolizing the "Circle of Life."
+    2. **Simba’s Abstract Growth:** Shapes change size and color based on keyboard input, reflecting different life stages.
+    3. **Starry Night Scene:** Stars twinkle in the sky, with ripple effects appearing on mouse clicks.
+- **Interactive Events:**
+  - **Mouse Events:** Clicking on the canvas triggers ripple effects.
+  - **Keyboard Events:** Pressing different keys changes the properties of abstract shapes, representing Simba’s growth.
+  - **Time-based Events:** The sun gradually rises and changes color.
+- **Files, Classes, and Objects:**
+  - **index.html**: Contains HTML structure.
+  - **style.css**: Manages the layout of the canvas.
+  - **script.js**: The main p5.js file for the code logic.
+  - **Objects:**
+    - `Sun`: Class for the sun animation.
+    - `SimbaShape`: Class for abstract shapes.
+    - `Star`: Class for twinkling stars.
+  - **Arrays:**
+    - Array to hold instances of `Star`.
+    - Array for expanding circles representing ripple effects.
+- **Interactivity and Time-based Logic:**
+  - The sun’s movement is based on elapsed time.
+  - Mouse clicks create expanding circles.
+  - Keyboard inputs alter `SimbaShape` properties.
+- **Custom Functions:**
+  - `drawSun()`: Animates the rising sun.
+  - `createRipple(x, y)`: Generates expanding circles.
+  - `changeSimbaState(key)`: Changes abstract shape properties.
+  - `drawStars()`: Manages twinkling stars.
+  - `updateScene()`: Handles canvas updates.
+
+## Next Steps
+- Implement additional interactions, refine abstract shapes, and complete all planned functions.
+- Continue testing and adjusting animations for smooth transitions.
