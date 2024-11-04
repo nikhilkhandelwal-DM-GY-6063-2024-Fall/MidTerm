@@ -1,76 +1,115 @@
-let sunY;           // Sun's vertical position
-let simbaSize;    
-let stars = [];     // Array for stars
+let sunY;
+let simbaStage = 0;
+let stars = [];
+let ripples = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  sunY = height; // Initialize the sun's starting position
   
-  sunY = height;  // Start the sun at the bottom
-  simbaSize = 50; // Initial size for the "cub" state
-  
-  // Create stars
-  for (let i = 0; i < 100; i++) {
-    let starX = random(width);
-    let starY = random(height / 2);  // Stars in upper half
-    let starSize = random(2, 5);
-    let brightness = random(100, 255);
-    stars.push([starX, starY, starSize, brightness]); // [x, y, size, brightness]
+  // Create a set of stars with random positions and sizes
+  for (let i = 0; i < 50; i++) {
+    let star = {
+      x: random(width),
+      y: random(height / 2),
+      size: random(1, 3),
+      brightness: random(150, 255)
+    };
+    stars.push(star);
   }
 }
 
 function draw() {
-  background(0);
-  
-  drawSun();
-  
-  drawSimbaShape();
-  
-  drawStars();
-}
+  background(30, 30, 60);  // Night sky
 
-// Function to draw the rising sun
-function drawSun() {
-  // Use a gradient color for the sun
-  fill(lerpColor(color(255, 204, 0), color(255, 165, 0), (height - sunY) / height));
-  noStroke();
-  ellipse(width / 2, sunY, 100);
-  
-  // Logic to make the sun rise (simplified)
-  if (sunY > height / 2) {
-    sunY -= 0.5;  // Move the sun upwards gradually
-  }
-}
-
-// Function to draw Simba's abstract shape
-function drawSimbaShape() {
-  fill(255, 223, 186); // Initial color for cub state
-  noStroke();
-  ellipse(width / 2, height / 2, simbaSize); // Draw at the center
-}
-
-// Function to draw stars
-function drawStars() {
+  // Draw stars
   for (let i = 0; i < stars.length; i++) {
     let star = stars[i];
-    fill(star[3]);  // Use the brightness value
-    noStroke();
-    ellipse(star[0], star[1], star[2]); // Draw star at (x, y)
+    fill(star.brightness);
+    ellipse(star.x, star.y, star.size);
+    // Make stars twinkle by randomly adjusting brightness
+    star.brightness += random(-5, 5);
+    star.brightness = constrain(star.brightness, 150, 255);
+  }
+
+  // Draw and animate the sun rising
+  drawSun();
+
+  // Draw Simba's abstract growth stage based on `simbaStage`
+  drawSimbaGrowth(simbaStage);
+
+  // Draw ripple effects
+  for (let i = ripples.length - 1; i >= 0; i--) {
+    drawRipple(ripples[i]);
+    if (ripples[i].alpha <= 0) {
+      ripples.splice(i, 1); // Remove ripple when fully faded
+    }
   }
 }
 
-// Placeholder for mouse interaction (ripple effect)
-function mousePressed() {
-  // - Add a new circle to an array
-  // - Animate the circles by increasing their size in draw()
-  // - Fade out the circles over time
+// Draw the sun and make it rise
+function drawSun() {
+  fill(255, 150, 0);
+  noStroke();
+  ellipse(width / 2, sunY, 160, 160);
+  
+  // Move the sun up until it reaches the midpoint
+  if (sunY > height / 2) {
+    sunY -= 0.2;
+  }
 }
 
-// Function to handle keyboard input for changing Simba's size
+// Draw Simba's growth stage based on the value of `simbaStage`
+function drawSimbaGrowth(stage) {
+  push();
+  translate(width / 2, height - 150); // Position Simba near the bottom
+
+  if (stage === 0) {
+    fill(255, 204, 0);
+    ellipse(0, 0, 50, 50); // Small circle for cub
+  } else if (stage === 1) {
+    fill(255, 170, 0);
+    ellipse(0, 0, 70, 70); // Medium circle for young Simba
+  } else if (stage === 2) {
+    fill(255, 130, 0);
+    ellipse(0, 0, 90, 90); // Large circle for adult Simba
+  } else if (stage === 3) {
+    fill(255, 90, 0);
+    ellipse(0, 0, 110, 110); // Extra large circle for King Simba
+  }
+
+  pop();
+}
+
+// Draw a ripple effect and make it expand and fade
+function drawRipple(ripple) {
+  noFill();
+  stroke(255, ripple.alpha);
+  ellipse(ripple.x, ripple.y, ripple.radius * 2);
+  ripple.radius += 1.5;  // Expand radius
+  ripple.alpha -= 3;     // Fade out
+}
+
+// Mouse interaction to create ripple effects
+function mousePressed() {
+  let ripple = {
+    x: mouseX,
+    y: mouseY,
+    radius: 10,
+    alpha: 200
+  };
+  ripples.push(ripple);
+}
+
+// Keyboard interaction to change Simba's stage
 function keyPressed() {
   if (key === '1') {
-    simbaSize = 50; // Cub state
+    simbaStage = 1;
   } else if (key === '2') {
-    simbaSize = 100; // Adolescent state
+    simbaStage = 2;
   } else if (key === '3') {
-    simbaSize = 150; // Adult state
+    simbaStage = 3;
+  } else {
+    simbaStage = 0;  // Default to cub stage
+  }
 }
