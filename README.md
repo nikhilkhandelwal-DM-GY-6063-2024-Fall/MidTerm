@@ -87,3 +87,29 @@ This week, I focused on planning and implementing the abstract design of the int
 ## Next Steps
 - Implement additional interactions, refine abstract shapes, and complete all planned functions.
 - Continue testing and adjusting animations for smooth transitions.
+
+## Milestone 3 (Final Version)
+
+### What I’ve Done This Week
+- Completed the final code for all interactive and time-based features.
+- Refined the ripple effect and added more dynamic star twinkling.
+- Polished Simba’s transformations to ensure smooth transitions across his growth stages.
+- Finalized documentation and presentation materials.
+
+### Final Interactivity and Time-Based Logic
+- **Sun Movement**: The sun rises continuously, resetting once it reaches the top of the screen, symbolizing the cycle of life.
+- **Star Twinkling**: Stars randomly vary in brightness, creating a realistic night sky.
+- **Simba’s Transformation**: The keyboard controls allow users to switch between Simba’s life stages, representing his character growth.
+- **Ripple Effect**: Each mouse click creates an expanding ripple, symbolizing Simba’s impact on his surroundings.
+
+### Visuals and Sketches
+1. **Simba as a Cub**  
+   ![Simba Cub Stage](screenshot-cub.png)
+2. **Simba as Young Lion**  
+   ![Simba Young Stage](screenshot-young.png)
+3. **Simba as King**  
+   ![Simba King Stage](screenshot-king.png)
+4. **Ripple Effect**  
+   ![Ripple Effect](screenshot-ripple.png)
+5. **Sunrise and Starry Sky**  
+   ![Background Elements](screenshot-background.png)
