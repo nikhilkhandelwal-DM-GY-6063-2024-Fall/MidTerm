@@ -3,9 +3,13 @@ let simbaStage = 0;
 let stars = [];
 let ripples = [];
 let bgImage;
+let cubImage, youngImage, kingImage;
 
 function preload() {
   bgImage = loadImage("background.jpg");
+  youngImage = loadImage("young.png");
+  cubImage = loadImage("cub.png"); 
+  kingImage = loadImage("adult.png"); 
 }
 
 function setup() {
@@ -72,14 +76,11 @@ function drawSimbaGrowth(stage) {
   translate(width / 2, height - 150); // Position Simba near the bottom
 
   if (stage === 0) {
-    fill(255, 204, 0);
-    ellipse(0, 0, 50, 50); // Small circle for cub
+    image(cubImage, -100, -100, 250, 250)
   } else if (stage === 1) {
-    fill(255, 170, 0);
-    ellipse(0, 0, 70, 70); // Medium circle for young Simba
+    image(youngImage, -100, -100, 250, 250)
   } else if (stage === 2) {
-    fill(255, 130, 0);
-    ellipse(0, 0, 90, 90); // Large circle for adult Simba
+    image(kingImage, -100, -150, 300, 300)
   }
 
   pop();
