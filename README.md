@@ -102,14 +102,3 @@ This week, I focused on planning and implementing the abstract design of the int
 - **Simba’s Transformation**: The keyboard controls allow users to switch between Simba’s life stages, representing his character growth.
 - **Ripple Effect**: Each mouse click creates an expanding ripple, symbolizing Simba’s impact on his surroundings.
 
-### Visuals and Sketches
-1. **Simba as a Cub**  
-   ![Simba Cub Stage](screenshot-cub.png)
-2. **Simba as Young Lion**  
-   ![Simba Young Stage](screenshot-young.png)
-3. **Simba as King**  
-   ![Simba King Stage](screenshot-king.png)
-4. **Ripple Effect**  
-   ![Ripple Effect](screenshot-ripple.png)
-5. **Sunrise and Starry Sky**  
-   ![Background Elements](screenshot-background.png)
