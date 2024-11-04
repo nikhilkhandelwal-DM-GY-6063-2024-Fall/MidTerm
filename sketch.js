@@ -16,10 +16,10 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   sunY = (height / 2) - 150;
   
-  for (let i = 0; i < 100; i++) {  // Increase to 100 stars
+  for (let i = 0; i < 100; i++) {  
     let star = {
       x: random(width),
-      y: random(height / 4), // Limit stars to the top quarter of the canvas
+      y: random(height / 4), 
       size: random(1, 3),
       brightness: random(150, 255)
     };
@@ -28,52 +28,45 @@ function setup() {
 }
 
 function draw() {
-  // Display the background image
-  background(bgImage); // Set the background to the image
+  background(bgImage);
 
-  // Draw stars
   for (let i = 0; i < stars.length; i++) {
     let star = stars[i];
     fill(star.brightness);
     ellipse(star.x, star.y, star.size);
-    // Make stars twinkle by randomly adjusting brightness
+    
     star.brightness += random(-5, 5);
     star.brightness = constrain(star.brightness, 150, 255);
   }
 
-  // Draw and animate the sun rising
   drawSun();
 
-  // Draw Simba's abstract growth stage based on `simbaStage`
   drawSimbaGrowth(simbaStage);
 
-  // Draw ripple effects
   for (let i = ripples.length - 1; i >= 0; i--) {
     drawRipple(ripples[i]);
     if (ripples[i].alpha <= 0) {
-      ripples.splice(i, 1); // Remove ripple when fully faded
+      ripples.splice(i, 1);
     }
   }
 }
 
-// Draw the sun and make it rise from middle-left to top-left in a loop
 function drawSun() {
   fill(255, 150, 0);
   noStroke();
-  ellipse((width / 4) - 25, sunY, 100, 100);  // Position sun on the left (1/4 of the screen width)
+  ellipse((width / 4) - 25, sunY, 100, 100);  
   
-  // Move the sun up until it reaches the top, then reset to middle
   if (sunY > 0) {
     sunY -= 0.2;
   } else {
-    sunY = (height / 2) - 150; // Reset to middle for continuous rising loop
+    sunY = (height / 2) - 150; 
   }
 }
 
-// Draw Simba's growth stage based on the value of `simbaStage`
+
 function drawSimbaGrowth(stage) {
   push();
-  translate(width / 2, height - 150); // Position Simba near the bottom
+  translate(width / 2, height - 150); 
 
   if (stage === 0) {
     image(cubImage, -100, -100, 250, 250)
@@ -86,7 +79,7 @@ function drawSimbaGrowth(stage) {
   pop();
 }
 
-// Draw a ripple effect and make it expand and fade
+
 function drawRipple(ripple) {
   noFill();
   stroke(255, ripple.alpha);
