@@ -2,16 +2,20 @@ let sunY;
 let simbaStage = 0;
 let stars = [];
 let ripples = [];
+let bgImage;
+
+function preload() {
+  bgImage = loadImage("background.jpg");
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  sunY = height; // Initialize the sun's starting position
+  sunY = (height / 2) - 150;
   
-  // Create a set of stars with random positions and sizes
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 100; i++) {  // Increase to 100 stars
     let star = {
       x: random(width),
-      y: random(height / 2),
+      y: random(height / 4), // Limit stars to the top quarter of the canvas
       size: random(1, 3),
       brightness: random(150, 255)
     };
@@ -20,7 +24,8 @@ function setup() {
 }
 
 function draw() {
-  background(30, 30, 60);  // Night sky
+  // Display the background image
+  background(bgImage); // Set the background to the image
 
   // Draw stars
   for (let i = 0; i < stars.length; i++) {
@@ -47,15 +52,17 @@ function draw() {
   }
 }
 
-// Draw the sun and make it rise
+// Draw the sun and make it rise from middle-left to top-left in a loop
 function drawSun() {
   fill(255, 150, 0);
   noStroke();
-  ellipse(width / 2, sunY, 160, 160);
+  ellipse((width / 4) - 25, sunY, 100, 100);  // Position sun on the left (1/4 of the screen width)
   
-  // Move the sun up until it reaches the midpoint
-  if (sunY > height / 2) {
+  // Move the sun up until it reaches the top, then reset to middle
+  if (sunY > 0) {
     sunY -= 0.2;
+  } else {
+    sunY = (height / 2) - 150; // Reset to middle for continuous rising loop
   }
 }
 
@@ -73,9 +80,6 @@ function drawSimbaGrowth(stage) {
   } else if (stage === 2) {
     fill(255, 130, 0);
     ellipse(0, 0, 90, 90); // Large circle for adult Simba
-  } else if (stage === 3) {
-    fill(255, 90, 0);
-    ellipse(0, 0, 110, 110); // Extra large circle for King Simba
   }
 
   pop();
@@ -107,8 +111,6 @@ function keyPressed() {
     simbaStage = 1;
   } else if (key === '2') {
     simbaStage = 2;
-  } else if (key === '3') {
-    simbaStage = 3;
   } else {
     simbaStage = 0;  // Default to cub stage
   }
