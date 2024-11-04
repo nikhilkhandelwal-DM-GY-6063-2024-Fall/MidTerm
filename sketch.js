@@ -1,5 +1,7 @@
 let sunY;
 let simbaStage = 0;
+let targetStage = 0;
+let transitionAlpha = 0; // Alpha for smooth transition
 let stars = [];
 let ripples = [];
 let bgImage;
@@ -40,8 +42,8 @@ function draw() {
   }
 
   drawSun();
-
-  drawSimbaGrowth(simbaStage);
+  
+  smoothSimbaTransition();
 
   for (let i = ripples.length - 1; i >= 0; i--) {
     drawRipple(ripples[i]);
@@ -63,22 +65,41 @@ function drawSun() {
   }
 }
 
-
-function drawSimbaGrowth(stage) {
+function smoothSimbaTransition() {
   push();
   translate(width / 2, height - 150); 
+  
+  // Smoothly transition alpha
+  if (simbaStage !== targetStage) {
+    transitionAlpha += 10; // Speed of transition
+    if (transitionAlpha >= 255) {
+      simbaStage = targetStage; 
+      transitionAlpha = 0; // Reset for next transition
+    }
+  }
 
-  if (stage === 0) {
-    image(cubImage, -100, -100, 250, 250)
-  } else if (stage === 1) {
-    image(youngImage, -100, -100, 250, 250)
-  } else if (stage === 2) {
-    image(kingImage, -100, -150, 300, 300)
+  // Draw the current stage with decreasing alpha
+  tint(255, 255 - transitionAlpha);
+  drawSimbaStage(simbaStage);
+
+  // Draw the next stage with increasing alpha
+  if (simbaStage !== targetStage) {
+    tint(255, transitionAlpha);
+    drawSimbaStage(targetStage);
   }
 
   pop();
 }
 
+function drawSimbaStage(stage) {
+  if (stage === 0) {
+    image(cubImage, -100, -100, 250, 250);
+  } else if (stage === 1) {
+    image(youngImage, -100, -100, 250, 250);
+  } else if (stage === 2) {
+    image(kingImage, -100, -150, 300, 300);
+  }
+}
 
 function drawRipple(ripple) {
   noFill();
@@ -102,10 +123,10 @@ function mousePressed() {
 // Keyboard interaction to change Simba's stage
 function keyPressed() {
   if (key === '1') {
-    simbaStage = 1;
+    targetStage = 1;
   } else if (key === '2') {
-    simbaStage = 2;
+    targetStage = 2;
   } else {
-    simbaStage = 0;  // Default to cub stage
+    targetStage = 0;  // Default to cub stage
   }
 }
